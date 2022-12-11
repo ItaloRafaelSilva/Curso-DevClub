@@ -1,0 +1,133 @@
+*{
+    font-family: 'Poppins', sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+header {
+    margin: 47px 0px 209.2px 42px;
+    cursor: pointer;
+}
+
+.link-header{
+    margin-right: 36px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    letter-spacing: 0.875px;
+    color: #17233D;
+}
+
+.button-header{
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 1px;
+    color: #FFFFFF;
+    background: #6FBF44;
+    border: 1px solid #4CB538;
+    border-radius: 6px;
+    width: 124px;
+    height: 51px;
+    cursor: pointer;
+}
+
+section {
+    display: inline-block;
+
+}
+
+.img-logo{
+    display: inline-block;
+    width: 595.18px;
+    height: 500px;
+    margin-left: 121px;
+}
+
+.paragrafo1{
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 33px;
+    color: #4B505A;
+    width: 493px;
+    margin-bottom: 55px;
+    margin-left: 84.98px;
+}
+
+h1{
+    font-weight: 700;
+    font-size: 62px;
+    line-height: 82px;
+    color: #161A49;
+    width: 582px;
+    margin-left: 84.94px;
+    margin-bottom: 47px;
+}
+
+.paragrafo2{
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 27px;
+    color: #6FBF44;
+    width: 112px;
+    margin-left: 84.98px;
+    cursor: pointer;
+}
+
+.mobile-menu{
+    display: none;
+}
+
+.mobile-menu1{
+    display: none;
+}
+
+@media  screen and (max-width: 450px) {
+    .link-header{
+        display: none;
+    }
+
+    .button-header{
+        position: absolute;
+        width: 90px;
+        margin: -179px 0px 0px 264px;
+        display: block;
+        border-radius: 6px;
+        height: 30px;
+    }
+
+    .paragrafo1{
+        font-size: 18px;
+        line-height: 27px;
+        width: 304px;
+        text-align: center;
+        margin: 31px 43px 0px 58px;
+    }
+
+    .paragrafo2{
+        font-size: 18px;
+        line-height: 27px;
+        width: 112px;
+        text-align: center;
+        position: center;
+        margin: 26px 139px 76.97px 139px;
+    }
+    .img-logo{
+        position: absolute;
+        margin: 205px 39px 22px 52px;
+        width: 312px;
+        height: 288px;
+    }
+
+    h1{
+        font-size: 30px;
+        line-height: 30px;
+        width: 278px;
+        height: 60px;
+        text-align: center;
+        margin: -79px 55px 29px 59px;
+
+    }
+}
