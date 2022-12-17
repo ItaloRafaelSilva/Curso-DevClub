@@ -3,13 +3,12 @@
 const person = {
     name: 'João',
     age: 18,
-    nationality: 'Brazilian'
+    nationality: 'Africa'
 }
 
-if (Brazilian) {
-    
+if (person.nationality === 'Brazilian'){
+    console.log("Ele é Brasileiro")
+} else{
+    console.log("Ele é Estrangeiro")
 }
-
-//console.log(person.nationality)
-
 
