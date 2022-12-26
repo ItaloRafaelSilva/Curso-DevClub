@@ -117,4 +117,4 @@ function  calculateDiscount(name, value, isFirstPurchase, isCashPayment){
     }
 }
 
-calculateDiscount(1500, 1, 1)
+calculateDiscount()
