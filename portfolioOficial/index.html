@@ -14,32 +14,77 @@
 
 <body>
 
-    <div class="caixa-primaria">
+    <div class="caixa-primaria" id="home">
         <header>
             <h2 class="portfolio">Portfo<span>lio</span></h2>
             <ul>
-                <li>Home</li>
-                <li>Sobre</li>
-                <li>Projetos</li>
-                <li>Fale Comigo</li>
+                <li><a class="link-menu" href="#home">Home</a></li>
+                <li><a class="link-menu" href="#sobre">Sobre</a></li>
+                <li><a class="link-menu" href="#projetos-id">Projetos</a></li>
+                <li><a class="link-menu" href="#fale-comigo">Fale Comigo</a></li>
             </ul>
         </header>
-
+  
         <div class="meu-nome">
             <h1>Italo <span>Rafael</span></h1>
             <h3>Programador Full-Stack</h3>
         </div>
 
     </div>
-
-    <section>
-        <img src="./img/cod.gif"
+    <hr>
+    <section id="sobre">
+        <img class="imagem-italo" src="./img/cod.gif">
         <div">
             <h2 class="titulo-2">Sobre mim</h2>
-            <p class="sobre">Eu sou um Programador Full - Stack, tenho experiência e conhecimento criando aplicações com HTML, CSS, JavaScript, React e Node, Banco de dados.</p>
-            <button class="botao-contato">Entre em contato</button>
+            <p class="sobre">Eu sou Programador Full - Stack, tenho experiência e conhecimento criando aplicações com HTML, CSS, JavaScript, React e Node, Banco de dados.</p>
+            <a class="link-menu" href="#fale-comigo"><button class="botao-contato">Entre em contato</button></a>
         </div>
     </section>
+    <hr>
+    <div class="projetos" id="projetos-id">
+        <h2>Projetos</h2>
+    </div>
+    <div class="card-projetos">
+        
+        <div class="card">
+            <img src="./img/Netflix-new-icon.png">
+            <h5>Netflix</h5>
+            <p>MANUTENÇÃO</p>
+            <a href="https://peaceful-starlight-02739b.netlify.app/" target="_blank">Ver Projeto</a>
+        </div>
+    
+        <div class="card">
+            <img src="./img/starbucks.png">
+            <h5>StarBucks</h5>
+            <p>MANUTENÇÃO</p>
+            <a href="https://peaceful-starlight-02739b.netlify.app/" target="_blank">Ver Projeto</a>
+        </div>
+
+        
+        <div class="card">
+            <img src="./img/crono.png">
+            <h5>Cronometro</h5>
+            <p>MANUTENÇÃO</p>
+            <a href="https://peaceful-starlight-02739b.netlify.app/" target="_blank">Ver Projeto</a>
+        </div>
+    </div>
+    <hr>    
+    <footer>
+        <h5>Italo Rafael</h5>
+        <p>Para mais informações</p>
+
+        <div class="social" id="fale-comigo">
+            <a href="https://www.linkedin.com/in/italo-rafael-507498228/">
+                <img src="./img/linkedin.png">
+            </a>
+
+            <a href="https://api.whatsapp.com/send/?phone=5519982277708&text=Ol%C3%A1+tudo+bem%3F+Entrei+em+contato+atrav%C3%A9s+do+seu+portfolio.+&type=phone_number&app_absent=0">
+                <img src="./img/telefone.png">
+            </a>
+        </div>
+    </footer>
+    
+
 </body>
 
 </html>
