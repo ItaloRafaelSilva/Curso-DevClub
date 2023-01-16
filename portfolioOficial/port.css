@@ -1,5 +1,4 @@
 *{
-    background-color: transparent;
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -7,7 +6,8 @@
 }
 
 body {
-    background-color: #191919;
+    background-color: black;
+    width: auto;
 }
 
 .caixa-primaria {
@@ -50,29 +50,76 @@ li {
 li:hover {
     color: #f9004d;
     transition: 0.5s;
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.2);
 }
+
+.link-menu {
+    text-decoration: none;
+    color: white;
+}
+
+.link-menu:hover{
+    color: #f9004d;
+    transition: 0.5s;
+}
+
+ul {
+    margin-left: 100px;
+}
+
 
 .meu-nome {
     position: absolute;
     top: 45%;
     left: 7%;
-}
+   }
 
 h1 {
+    border-right: 0.75px solid rgba(255, 255, 255);
     color: white;
-    font-size: 75px;
+    text-align: left;
+    margin: 0;
+    font-size: 5em;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
-h1 span {
+.typing-animation {
+    animation: blinkCursor 400ms infinite normal,
+     typing 4s steps(50) 0s normal both;
+}
+
+@keyframes typing{
+    from{
+        width: 0;
+    }
+    to {
+        width: 6em;
+    }
+}
+
+@keyframes blinkCursor{
+    from{
+        border-right-color: rgba(255, 255, 255, 0.75);
+    }
+    to {
+        border-right-color: transparent;
+    }
+}
+
+h1 span{
     color: #f9004d;
 }
 
 .meu-nome h3 {
     color: white;
     font-size: 25px;
+    margin-left: 67px;
 }
 
-section {
+#sobre {
     height: 63vh;
     width: 100%;
     display: flex;
@@ -80,7 +127,7 @@ section {
     background-color: black;
 }
 
-section div {
+#biografia {
     align-items: center;
     background-color: transparent;
     flex-direction: column;
@@ -107,7 +154,6 @@ section div {
     padding-bottom: 10px;
 }
 
-
 .botao-contato {
     color: white;
     background-color: #f9004d;
@@ -121,7 +167,6 @@ section div {
 }
 
 .botao-contato:hover {
-    background-color: black;
     border: 3px solid #f9004d;
     transition: 0.5s;
 }
@@ -177,8 +222,8 @@ section div {
 }
 
 .card a:hover {
-
     border: 2px solid #f9004d;
+    
 }
 .card-projetos {
     background-color: #191919;
@@ -187,69 +232,202 @@ section div {
     margin-top: 100px;
 }
 
-
-footer {
-    background-color: #000;
-    padding-top: 100px;
-    padding-bottom: 120px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.card-projetos :hover {
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.2);
 }
 
-footer h5 {
-    background-color: transparent;
+.final{
+    height: 100%;
+    width: 100%;
+    padding: 148px 15%;
+    background-color: black;
+}
+
+
+#fale-comigo {
     color: white;
-    font-size: 30px;
+    text-align: center;
+    font-size: 60px;
 }
 
-footer p {
-    background-color: transparent;
+#description{
     color: white;
-    font-size: 18px;
-    margin-top: 14px;
-    margin-bottom: 30px;
+    text-align: center;
+    font-size: 24px;
 }
 
-.social {
-    background-color: transparent;
-    display: flex;
-    gap: 20px;
+#description-one {
+    display: inline-block;
 }
 
-.social img {
-    height: 24px;
-    border-radius: 50%;
+.primeira-linha {
+    width: 100%;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    position:relative;
+    top: 100px;
+    bottom: 60px;
 }
 
-.social a {
-    background-color: #f9004d;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.primeira-linha1 {
+    width: 100%;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    position: relative;
+}
+
+div.primeira-linha label {
+    color: white;
+    position: absolute;
+    left: 0;
+    bottom: 70px;
+}
+
+div.primeira-linha1 label {
+    color: white;
+    position: absolute;
+    top: -8px;
+    left: 560px;
+    bottom: 60px;
+}
+
+#description-two {
+    display: inline-block;
+}
+
+.segunda-linha {
+    width: 100%;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    position:relative;
+    top: 100px;
+    bottom: 60px;
+}
+
+.segunda-linha1 {
+    width: 97%;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    position: relative;
+}
+
+div.segunda-linha label {
+    color: white;
+    position: absolute;
+    left: 0;
+    bottom: 70px;
+}
+
+div.segunda-linha1 label {
+    color: white;
+    position: absolute;
+    top: 7px;
+    left: 560px;
+    bottom: 30px;
+}
+.caixa-de-texto {
+    width: 100%;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    position:relative;
+    top: 130px;
+    bottom: 60px;
+}
+
+div.caixa-de-texto label {
+    color: white;
+    position: absolute;
+    left: 0;
+    bottom: 230px;
+}
+
+#seu-nome {
+    border: none;
+    padding: 10px;
+    outline: none;
+    width: 40%;
+    background: #fff;
+    color: #333;
+    border-radius: 30px;
+    margin-bottom: 20px;
+}
+
+#seu-email {
+    border: none;
+    padding: 10px;
+    outline: none;
+    width: 50%;
+    background: #fff;
+    color: #333;
+    border-radius: 30px;
+    margin-bottom: 15px;
+    position: absolute;
+    left: 580px;
+    top: 25px;
+}
+
+#seu-telefone {
+    border: none;
+    padding: 10px;
+    outline: none;
+    width: 40%;
+    background: #fff;
+    color: #333;
+    border-radius: 30px;
+    margin-bottom: 20px;
+    margin-top: 15px;
+}
+
+#assunto {
+    border: none;
+    padding: 10px;
+    outline: none;
+    width: 52%;
+    background: #fff;
+    color: #333;
+    border-radius: 30px;
+    position: absolute;
+    left: 580px;
+    top: 40px;
+}
+
+#mensagem {
+    border: none;
+    padding: 10px;
+    outline: none;
+    width: 100%;
+    background: #fff;
+    color: #333;
+    border-radius: 30px;
+    margin-bottom: 20px;
+    margin-top: 15px;
+}
+
+#button-submit {
+    width: 100%;
     height: 50px;
-    width: 50px;
-    cursor: pointer;
-}
-
-.social a:hover {
-    transform: scale(1.3);
-    transition: 0.5s;
-}
-
-.link-menu {
-    text-decoration: none;
+    background: #f9004d;
+    box-shadow: 0px 10px 24px rgba(148, 153, 234, 0.0979959);
+    border: none;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 36px;
+    text-align: center;
     color: white;
+    border-radius: 30px;
+    cursor: pointer;
+    position: relative;
+    top: 130px;
 }
 
-.link-menu:hover{
-    color: #f9004d;
-    transition: 0.5s;
-}
-
-ul {
-    margin-left: 100px;
-    background-color: transparent;
-}
+textarea {
+    min-height: 12.5rem;
+    resize: vertical;
+  }

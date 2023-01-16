@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./port.css">
+    <script src="./contact.js" defer></script>
     <title>Italo Rafael</title>
 </head>
 
@@ -28,7 +29,7 @@
 
         <!-- Titulos de apresentação do site -->
         <div class="meu-nome">
-            <h1>Italo <span>Rafael</span></h1>
+            <h1 class="typing-animation">Italo <span>Rafael</span></h1>
             <h3>Programador Full-Stack</h3>
         </div>
 
@@ -39,7 +40,7 @@
     <!-- Descrição do meu Perfil profissional -->
     <section id="sobre">
         <img class="imagem-italo" src="./img/cod.gif">
-        <div">
+        <div" id="biografia">
             <h2 class="titulo-2">Sobre mim</h2>
             <p class="sobre">Eu sou Programador Full - Stack, tenho experiência e conhecimento criando aplicações com
                 HTML, CSS, JavaScript, React e Node, Banco de dados.</p>
@@ -82,12 +83,47 @@
     <hr> <!-- Quebra de linha -->
 
     <!-- Meu contato para maiores informações -->
-    <footer>
-        <h5>Italo Rafael</h5>
-        <p>Para mais informações</p>
+    <footer class="final">
 
-        <div class="social" id="fale-comigo">
-            <a href="https://www.linkedin.com/in/italo-rafael-507498228/">
+        <section class="contact">
+            <h5 id="fale-comigo">Fale comigo</h5>
+            <p id="description">Resta alguma dúvida? Preencha os campos abaixo com os seguintes dados que em breve
+                entrarei em contato.
+            </p>
+
+            <form id="form" data-form method="post" action="https://formsubmit.co/el/lefura">
+                <div class="primeira-linha" id="description-one">
+                    <label for="name">SEU NOME (*)</label>
+                    <input type="text" required name="nome" label="Seu Nome" id="seu-nome" placeholder="Digite aqui">
+                </div>
+                <div class="primeira-linha1" id="description-one">
+                    <label for="email">E-MAIL (*)</label>
+                    <input type="email" required name="email" label="E-mail" id="seu-email"
+                        placeholder="email@exemplo.com.br">
+                </div>
+
+                <div class="segunda-linha" id="#description-two">
+                    <label for="telefone">TELEFONE (*)</label>
+                    <input type="text" name="telefone" label="Telefone" id="seu-telefone" placeholder="(__)_____-____">
+                </div>
+                <div class="segunda-linha1" id="#description-two">
+                    <label for="assunto">ASSUNTO (*)</label>
+                    <input type="text" required name="assunto" label="Assunto" id="assunto" placeholder="Digite Aqui">
+                </div>
+
+                <div class="caixa-de-texto">
+                    <label for="mensagem">MENSAGEM (*)</label>
+                    <textarea name="mensagem" id="mensagem" required></textarea>
+                </div> 
+
+                <input type="submit" data-button value="enviar" id="button-submit">
+
+        </section>
+        </form>
+
+
+        <!-- <div class="social" id="fale-comigo">
+            <a href="https://www.linkedin.com/in/italo-rafael-507498228/" target="_blank">
                 <img src="./img/linkedin.png">
             </a>
 
@@ -95,9 +131,9 @@
                 href="https://api.whatsapp.com/send/?phone=5519982277708&text=Ol%C3%A1+tudo+bem%3F+Entrei+em+contato+atrav%C3%A9s+do+seu+portfolio.+&type=phone_number&app_absent=0">
                 <img src="./img/telefone.png">
             </a>
-        </div>
+       </div>-->
     </footer>
-    
+
 </body>
 
 </html>
