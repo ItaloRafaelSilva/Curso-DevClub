@@ -13,22 +13,21 @@
     <title>Italo Rafael</title>
 </head>
 
-<body>
+<body id="wallpaper">
 
-    <!-- Menu do site -->
+
     <div class="caixa-primaria" id="home">
         <header>
             <h2 class="portfolio">PORTFÓ<span>LIO</span></h2>
             <ul>
                 <li><a class="link-menu" href="#home">HOME</a></li>
                 <li><a class="link-menu" href="#sobre">SOBRE MIM</a></li>
-                <li><a class="link-menu" href="#sobre">HABILIDADES</a></li>
+                <li><a class="link-menu" href="#">HABILIDADES</a></li>
                 <li><a class="link-menu" href="#projetos-id">PORTFÓLIO</a></li>
                 <li><a class="link-menu" href="#fale-comigo">FALE COMIGO</a></li>
             </ul>
         </header>
 
-        <!-- Titulos de apresentação do site -->
         <div class="meu-nome">
             <h1 class="typing-animation">ITALO <span>RAFAEL</span></h1>
             <h3>Programador Full-Stack</h3>
@@ -36,22 +35,28 @@
 
     </div>
 
-    <hr> <!-- Quebra de linha -->
 
-    <!-- Descrição do meu Perfil profissional -->
     <section id="sobre">
-        <img class="imagem-italo" src="./img/cod.gif">
+        <img class="imagem-italo" src="./img/Italo-Perfil.jpg">
         <div" id="biografia">
-            <h2 class="titulo-2">Sobre mim</h2>
-            <p class="sobre">Eu sou Programador Full - Stack, tenho experiência e conhecimento criando aplicações com
-                HTML, CSS, JavaScript, React e Node, Banco de dados.</p>
-            <a class="link-menu" href="#fale-comigo"><button class="botao-contato">Entre em contato</button></a>
+            <h2 class="titulo-2" >Sobre mim</h2>
+            <h3 id="ola">Olá</h3>
+            <p class="sobre" >sou Italo Rafael. Apaixonado pela área de Desenvolvimento que decidi seguir carreira,
+                estou motivado a alcançar o objetivo de ser Developer Full Stack Senior. Para atingir esse objetivo
+                estou totalmente dedicado aos estudos de Lógica de Programação, Estrutura de Sistema, Linguagens e Inglês. 
+                <br>
+                Em busca da primeira oportunidade na área.
+                <br>
+                Tenho praticado diariamente todo aprendizado adquirido nos cursos que estou participando com projetos já
+                desenvolvidos, solucionando problemas com bugs ou adicionando novos recursos e buscando novas soluções
+                para cada caso.</p>
+            <a class="link-menu" href="#fale-comigo"><button class="botao-sobre">Entre em contato</button></a>
             </div>
+            <a class="link-menu" download href="./Download/Profile.pdf" ><button class="botao-sobre">Download CV</button></a>
+        </div>
     </section>
 
-    <hr> <!-- Quebra de linha -->
 
-    <!-- Projetos realizados durante a minha carreira -->
     <div class="projetos" id="projetos-id">
         <h2>Projetos</h2>
     </div>
@@ -81,9 +86,7 @@
         </div>
     </div>
 
-    <hr> <!-- Quebra de linha -->
 
-    <!-- Meu contato para maiores informações -->
     <footer class="final">
 
         <section class="contact">
@@ -115,7 +118,7 @@
                 <div class="caixa-de-texto">
                     <label for="mensagem">MENSAGEM (*)</label>
                     <textarea name="mensagem" id="mensagem" required></textarea>
-                </div> 
+                </div>
 
                 <input type="submit" data-button value="enviar" id="button-submit">
 
