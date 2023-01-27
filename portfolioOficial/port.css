@@ -1,12 +1,12 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
 
-#wallpaper{
-    background-image: url("https://wallpapercave.com/wp/wp7045944.jpg");
+#wallpaper {
+    background-image: url("https://wallpapercave.com/wp/wp2339750.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -59,7 +59,7 @@ li:hover {
     color: white;
 }
 
-.link-menu:hover{
+.link-menu:hover {
     color: #f9004d;
     transition: 0.5s;
 }
@@ -73,7 +73,7 @@ ul {
     position: absolute;
     top: 45%;
     left: 7%;
-   }
+}
 
 h1 {
     border-right: 0.75px solid rgba(255, 255, 255);
@@ -87,28 +87,30 @@ h1 {
 
 .typing-animation {
     animation: blinkCursor 400ms infinite normal,
-     typing 4s steps(50) 0s normal ;
+        typing 4s steps(50) 0s normal;
 }
 
-@keyframes typing{
-    from{
+@keyframes typing {
+    from {
         width: 0;
     }
+
     to {
         width: 7em;
     }
 }
 
-@keyframes blinkCursor{
-    from{
+@keyframes blinkCursor {
+    from {
         border-right-color: rgba(255, 255, 255, 0.75);
     }
+
     to {
         border-right-color: transparent;
     }
 }
 
-h1 span{
+h1 span {
     color: #f9004d;
 }
 
@@ -142,11 +144,11 @@ h1 span{
 }
 
 .titulo-2 {
-        color: white;
-        font-size: 70px;
+    color: white;
+    font-size: 70px;
 }
 
-#ola{
+#ola {
     font-size: 40px;
     color: #f9004d;
     justify-content: center;
@@ -173,6 +175,58 @@ h1 span{
 .botao-sobre:hover {
     border: 3px solid #f9004d;
     transition: 1s;
+}
+
+#skill {
+    padding-top: 80px;
+    padding-bottom: 100px;
+}
+
+section h2 {
+    color: white;
+    font-size: 60px;
+    text-align: center;
+}
+
+#skill-card {
+    background-color: #191919;
+    height: 230px;
+    width: 220px;
+    border-radius: 20px;
+    padding: 15px 35px;
+    text-align: center;
+    margin-bottom: 120px;
+    margin-right: 35px;
+}
+
+#skill-card img {
+    height: 100px;
+}
+
+#skill-card h5 {
+    color: white;
+    font-size: 24px;
+}
+
+#div-skill {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 100px;
+    margin-left: 250px;
+}
+
+#div-skill :hover {
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.2);
+}
+
+#borda {
+    padding: 115px;
+    border: solid 1px;
+    box-shadow: 0px 1px 30px;
+    margin-top: 12px;
+    border-radius: 8px;
 }
 
 .projetos {
@@ -223,8 +277,9 @@ h1 span{
 
 .card a:hover {
     border: 2px solid #f9004d;
-    
+
 }
+
 .card-projetos {
     display: flex;
     justify-content: space-around;
@@ -237,7 +292,7 @@ h1 span{
     transform: scale(1.2);
 }
 
-.final{
+.final {
     height: 100%;
     width: 100%;
     padding: 148px 15%;
@@ -250,7 +305,7 @@ h1 span{
     font-size: 60px;
 }
 
-#description{
+#description {
     color: white;
     text-align: center;
     font-size: 24px;
@@ -265,7 +320,7 @@ h1 span{
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
-    position:relative;
+    position: relative;
     top: 100px;
     bottom: 60px;
 }
@@ -302,7 +357,7 @@ div.primeira-linha1 label {
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
-    position:relative;
+    position: relative;
     top: 100px;
     bottom: 60px;
 }
@@ -329,12 +384,13 @@ div.segunda-linha1 label {
     left: 560px;
     bottom: 30px;
 }
+
 .caixa-de-texto {
     width: 100%;
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
-    position:relative;
+    position: relative;
     top: 130px;
     bottom: 60px;
 }
@@ -428,4 +484,4 @@ div.caixa-de-texto label {
 textarea {
     min-height: 12.5rem;
     resize: vertical;
-  }
+}
