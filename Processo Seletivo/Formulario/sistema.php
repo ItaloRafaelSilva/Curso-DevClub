@@ -23,7 +23,7 @@ $result = $conexao->query($sql);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./sistema.css">
+    <link rel="stylesheet" href="./css/sistema.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Sistema</title>
 </head>
@@ -53,7 +53,7 @@ $result = $conexao->query($sql);
             </svg>
         </button>
 
-        <a class='btn btn-primary' href='' title='Adicionar'>
+        <a class='btn btn-primary' href='novo-usuario.php' title='Adicionar'>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill-add" viewBox="0 0 16 16">
                 <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0Zm-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                 <path d="M2 13c0 1 1 1 1 1h5.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.544-3.393C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4Z" />
@@ -66,14 +66,12 @@ $result = $conexao->query($sql);
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Nome</th>
-                    <th scope="col">Senha</th>
-                    <th scope="col">Email</th>
+                    <th scope="col">CPF</th>
+                    <th scope="col">RG</th>
                     <th scope="col">Telefone</th>
-                    <th scope="col">Sexo</th>
                     <th scope="col">Data de Nascimento</th>
                     <th scope="col">Cidade</th>
                     <th scope="col">Estado</th>
-                    <th scope="col">Endereço</th>
                     <th scope="col">...</th>
                 </tr>
             </thead>
@@ -83,14 +81,12 @@ $result = $conexao->query($sql);
                     echo "<tr>";
                     echo "<td>" . $user_data['id'] . "</td>";
                     echo "<td>" . $user_data['nome'] . "</td>";
-                    echo "<td>" . $user_data['senha'] . "</td>";
-                    echo "<td>" . $user_data['email'] . "</td>";
+                    echo "<td>" . $user_data['cpf'] . "</td>";
+                    echo "<td>" . $user_data['rg'] . "</td>";
                     echo "<td>" . $user_data['telefone'] . "</td>";
-                    echo "<td>" . $user_data['sexo'] . "</td>";
-                    echo "<td>" . $user_data['data_nascimento'] . "</td>";
+                    echo "<td>" . $user_data['data'] . "</td>";
                     echo "<td>" . $user_data['cidade'] . "</td>";
                     echo "<td>" . $user_data['estado'] . "</td>";
-                    echo "<td>" . $user_data['endereco'] . "</td>";
                     echo "<td>
                         <a class='btn btn-sm btn-primary' href='edit.php?id=$user_data[id]' title='Editar'>
                             <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-pencil' viewBox='0 0 16 16'>

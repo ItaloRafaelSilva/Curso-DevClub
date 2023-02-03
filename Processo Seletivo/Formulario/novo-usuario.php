@@ -20,8 +20,7 @@ if (isset($_POST['submit'])) {
 
     $result = mysqli_query($conexao, "INSERT INTO usuarios(nome,senha,email,cpf,rg,telefone,data,cep,cidade,estado,endereco,bairro,num) 
 VALUES ('$nome','$senha','$email','$cpf','$rg','$telefone','$data_nascimento','$cep','$cidade','$estado','$endereco','$bairro','$num')");
-
-    header('Location: login.php');
+    header('Location: sistema.php');
 }
 
 ?>
@@ -33,12 +32,13 @@ VALUES ('$nome','$senha','$email','$cpf','$rg','$telefone','$data_nascimento','$
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/formulario.css">
+    <link rel="stylesheet" href="./formulario.css">
+    <link rel="stylesheet" href="./css/style-novo-usuario.css">
     <script src="./js/jquery.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
     <script src="./js/jquery.mask.min.js"></script>
     <script src="assets/js/javascript.js"></script>
-    <title>Formulario de Registro</title>
+    <title>Novo Registro</title>
     <script>
         $("#cpf").mask("000.000.000-00");
         $("#telefone").mask("(00) 00000-0000");
@@ -49,10 +49,12 @@ VALUES ('$nome','$senha','$email','$cpf','$rg','$telefone','$data_nascimento','$
 </head>
 
 <body>
+    <a href="sistema.php"><button class="button-voltar">Voltar</button></a>
     <div class="box">
-        <form action="formulario.php" method="post">
+
+        <form action="novo-usuario.php" method="post">
             <fieldset>
-                <legend><b>Fórmulário de Registro</b></legend>
+                <legend><b>Novo Registro</b></legend>
                 <br>
                 <div class="inputBox">
                     <input type="text" name="nome" id="nome" class="inputUser" required>
@@ -126,72 +128,71 @@ VALUES ('$nome','$senha','$email','$cpf','$rg','$telefone','$data_nascimento','$
         </form>
     </div>
     <script>
-
-function limpa_formulário_cep() {
-        //Limpa valores do formulário de cep.
-        document.getElementById('endereco').value=("");
-        document.getElementById('bairro').value=("");
-        document.getElementById('cidade').value=("");
-        document.getElementById('estado').value=("");
-}
-
-function meu_callback(conteudo) {
-    if (!("erro" in conteudo)) {
-        //Atualiza os campos com os valores.
-        document.getElementById('endereco').value=(conteudo.logradouro);
-        document.getElementById('bairro').value=(conteudo.bairro);
-        document.getElementById('cidade').value=(conteudo.localidade);
-        document.getElementById('estado').value=(conteudo.uf);
-    } //end if.
-    else {
-        //CEP não Encontrado.
-        limpa_formulário_cep();
-        alert("CEP não encontrado.");
-    }
-}
-    
-function pesquisacep(valor) {
-
-    //Nova variável "cep" somente com dígitos.
-    var cep = valor.replace(/\D/g, '');
-
-    //Verifica se campo cep possui valor informado.
-    if (cep != "") {
-
-        //Expressão regular para validar o CEP.
-        var validacep = /^[0-9]{8}$/;
-
-        //Valida o formato do CEP.
-        if(validacep.test(cep)) {
-
-            //Preenche os campos com "..." enquanto consulta webservice.
-            document.getElementById('endereco').value="...";
-            document.getElementById('bairro').value="...";
-            document.getElementById('cidade').value="...";
-            document.getElementById('estado').value="...";
-
-            //Cria um elemento javascript.
-            var script = document.createElement('script');
-
-            //Sincroniza com o callback.
-            script.src = 'https://viacep.com.br/ws/'+ cep + '/json/?callback=meu_callback';
-
-            //Insere script no documento e carrega o conteúdo.
-            document.body.appendChild(script);
-
-        } //end if.
-        else {
-            //cep é inválido.
-            limpa_formulário_cep();
-            alert("Formato de CEP inválido.");
+        function limpa_formulário_cep() {
+            //Limpa valores do formulário de cep.
+            document.getElementById('endereco').value = ("");
+            document.getElementById('bairro').value = ("");
+            document.getElementById('cidade').value = ("");
+            document.getElementById('estado').value = ("");
         }
-    } //end if.
-    else {
-        //cep sem valor, limpa formulário.
-        limpa_formulário_cep();
-    }
-};
 
-</script>
+        function meu_callback(conteudo) {
+            if (!("erro" in conteudo)) {
+                //Atualiza os campos com os valores.
+                document.getElementById('endereco').value = (conteudo.logradouro);
+                document.getElementById('bairro').value = (conteudo.bairro);
+                document.getElementById('cidade').value = (conteudo.localidade);
+                document.getElementById('estado').value = (conteudo.uf);
+            } //end if.
+            else {
+                //CEP não Encontrado.
+                limpa_formulário_cep();
+                alert("CEP não encontrado.");
+            }
+        }
+
+        function pesquisacep(valor) {
+
+            //Nova variável "cep" somente com dígitos.
+            var cep = valor.replace(/\D/g, '');
+
+            //Verifica se campo cep possui valor informado.
+            if (cep != "") {
+
+                //Expressão regular para validar o CEP.
+                var validacep = /^[0-9]{8}$/;
+
+                //Valida o formato do CEP.
+                if (validacep.test(cep)) {
+
+                    //Preenche os campos com "..." enquanto consulta webservice.
+                    document.getElementById('endereco').value = "...";
+                    document.getElementById('bairro').value = "...";
+                    document.getElementById('cidade').value = "...";
+                    document.getElementById('estado').value = "...";
+
+                    //Cria um elemento javascript.
+                    var script = document.createElement('script');
+
+                    //Sincroniza com o callback.
+                    script.src = 'https://viacep.com.br/ws/' + cep + '/json/?callback=meu_callback';
+
+                    //Insere script no documento e carrega o conteúdo.
+                    document.body.appendChild(script);
+
+                } //end if.
+                else {
+                    //cep é inválido.
+                    limpa_formulário_cep();
+                    alert("Formato de CEP inválido.");
+                }
+            } //end if.
+            else {
+                //cep sem valor, limpa formulário.
+                limpa_formulário_cep();
+            }
+        };
+    </script>
 </body>
+
 </html>

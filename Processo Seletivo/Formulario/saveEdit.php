@@ -7,15 +7,19 @@
         $nome = $_POST['nome'];
         $email = $_POST['email'];
         $senha = $_POST['senha'];
+        $cpf = $_POST['cpf'];
+        $rg = $_POST['rg'];
         $telefone = $_POST['telefone'];
-        $sexo = $_POST['genero'];
-        $data_nasc = $_POST['data_nascimento'];
+        $data_nascimento = $_POST['data'];
+        $cep = $_POST['cep'];
         $cidade = $_POST['cidade'];
         $estado = $_POST['estado'];
         $endereco = $_POST['endereco'];
+        $bairro = $_POST['bairro'];
+        $num = $_POST['num'];
         
         $sqlInsert = "UPDATE usuarios 
-        SET nome='$nome',senha='$senha',email='$email',telefone='$telefone',sexo='$sexo',data_nascimento='$data_nasc',cidade='$cidade',estado='$estado',endereco='$endereco'
+        SET nome='$nome',senha='$senha',cpf='$cpf',rg='$rg',email='$email',telefone='$telefone',data='$data_nascimento',cep='$cep',cidade='$cidade',estado='$estado',endereco='$endereco',bairro='$bairro',num='$num'
         WHERE id=$id";
         $result = $conexao->query($sqlInsert);
         print_r($result);
