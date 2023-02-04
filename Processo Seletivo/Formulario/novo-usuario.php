@@ -14,12 +14,12 @@ if (isset($_POST['submit'])) {
     $cep = $_POST['cep'];
     $estado = $_POST['estado'];
     $cidade = $_POST['cidade'];
-    $endereco = $_POST['endereco'];
+    $logradouro = $_POST['logradouro'];
     $bairro = $_POST['bairro'];
     $num = $_POST['num'];
 
-    $result = mysqli_query($conexao, "INSERT INTO usuarios(nome,senha,email,cpf,rg,telefone,data,cep,cidade,estado,endereco,bairro,num) 
-VALUES ('$nome','$senha','$email','$cpf','$rg','$telefone','$data_nascimento','$cep','$cidade','$estado','$endereco','$bairro','$num')");
+    $result = mysqli_query($conexao, "INSERT INTO usuarios(nome,senha,email,cpf,rg,telefone,data,cep,cidade,estado,logradouro,bairro,num) 
+VALUES ('$nome','$senha','$email','$cpf','$rg','$telefone','$data_nascimento','$cep','$cidade','$estado','$logradouro','$bairro','$num')");
     header('Location: sistema.php');
 }
 
@@ -32,7 +32,7 @@ VALUES ('$nome','$senha','$email','$cpf','$rg','$telefone','$data_nascimento','$
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./formulario.css">
+    <link rel="stylesheet" href="./css/formulario.css">
     <link rel="stylesheet" href="./css/style-novo-usuario.css">
     <script src="./js/jquery.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
@@ -107,8 +107,8 @@ VALUES ('$nome','$senha','$email','$cpf','$rg','$telefone','$data_nascimento','$
                 </div>
                 <br><br>
                 <div class="inputBox">
-                    <input type="text" name="endereco" id="endereco" class="inputUser" required>
-                    <label for="endereco" class="labelInput">Rua:</label>
+                    <input type="text" name="logradouro" id="logradouro" class="inputUser" required>
+                    <label for="logradouro" class="labelInput">Rua:</label>
                 </div>
                 <br><br>
                 <div class="inputBox">
@@ -130,7 +130,7 @@ VALUES ('$nome','$senha','$email','$cpf','$rg','$telefone','$data_nascimento','$
     <script>
         function limpa_formulário_cep() {
             //Limpa valores do formulário de cep.
-            document.getElementById('endereco').value = ("");
+            document.getElementById('logradouro').value = ("");
             document.getElementById('bairro').value = ("");
             document.getElementById('cidade').value = ("");
             document.getElementById('estado').value = ("");
@@ -139,7 +139,7 @@ VALUES ('$nome','$senha','$email','$cpf','$rg','$telefone','$data_nascimento','$
         function meu_callback(conteudo) {
             if (!("erro" in conteudo)) {
                 //Atualiza os campos com os valores.
-                document.getElementById('endereco').value = (conteudo.logradouro);
+                document.getElementById('logradouro').value = (conteudo.logradouro);
                 document.getElementById('bairro').value = (conteudo.bairro);
                 document.getElementById('cidade').value = (conteudo.localidade);
                 document.getElementById('estado').value = (conteudo.uf);
@@ -166,7 +166,7 @@ VALUES ('$nome','$senha','$email','$cpf','$rg','$telefone','$data_nascimento','$
                 if (validacep.test(cep)) {
 
                     //Preenche os campos com "..." enquanto consulta webservice.
-                    document.getElementById('endereco').value = "...";
+                    document.getElementById('logradouro').value = "...";
                     document.getElementById('bairro').value = "...";
                     document.getElementById('cidade').value = "...";
                     document.getElementById('estado').value = "...";

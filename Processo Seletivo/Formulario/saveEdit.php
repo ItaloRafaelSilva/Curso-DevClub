@@ -14,12 +14,12 @@
         $cep = $_POST['cep'];
         $cidade = $_POST['cidade'];
         $estado = $_POST['estado'];
-        $endereco = $_POST['endereco'];
+        $logradouro = $_POST['logradouro'];
         $bairro = $_POST['bairro'];
         $num = $_POST['num'];
         
         $sqlInsert = "UPDATE usuarios 
-        SET nome='$nome',senha='$senha',cpf='$cpf',rg='$rg',email='$email',telefone='$telefone',data='$data_nascimento',cep='$cep',cidade='$cidade',estado='$estado',endereco='$endereco',bairro='$bairro',num='$num'
+        SET nome='$nome',senha='$senha',cpf='$cpf',rg='$rg',email='$email',telefone='$telefone',data='$data_nascimento',cep='$cep',cidade='$cidade',estado='$estado',logradouro='$logradouro',bairro='$bairro',num='$num'
         WHERE id=$id";
         $result = $conexao->query($sqlInsert);
         print_r($result);

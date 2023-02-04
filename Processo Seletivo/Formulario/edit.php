@@ -18,7 +18,7 @@ if (!empty($_GET['id'])) {
             $cep = $user_data['cep'];
             $estado = $user_data['estado'];
             $cidade = $user_data['cidade'];
-            $endereco = $user_data['endereco'];
+            $logradouro = $user_data['logradouro'];
             $bairro = $user_data['bairro'];
             $num = $user_data['num'];
         }
@@ -37,6 +37,7 @@ if (!empty($_GET['id'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/edit.css">
+    <link rel="stylesheet" href="./css/style-novo-usuario.css">
     <script src="./js/jquery.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
     <script src="./js/jquery.mask.min.js"></script>
@@ -53,6 +54,7 @@ if (!empty($_GET['id'])) {
 
 <body>
     <a href="sistema.php"><button id="button-voltar">Voltar</button></a>
+    
     <div class="box">
         <form action="saveEdit.php" method="POST">
             <fieldset>
@@ -94,7 +96,7 @@ if (!empty($_GET['id'])) {
                 </div>
                 <br><br>
                 <div class="inputBox">
-                    <input type="text" name="cep" id="cep" class="inputUser" value=<?php echo $cep; ?> required>
+                    <input type="text" name="cep" id="cep" class="inputUser" onblur="pesquisacep(this.value);"  value=<?php echo $cep; ?> required>
                     <label for="cep" class="labelInput">CEP:</label>
                 </div>
                 <br><br>
@@ -109,8 +111,8 @@ if (!empty($_GET['id'])) {
                 </div>
                 <br><br>
                 <div class="inputBox">
-                    <input class="inputUser" type="text" name="endereco" id="endereco" value="<?php echo $endereco; ?>">
-                    <label for="endereco" class="labelInput">Rua:</label>
+                    <input class="inputUser" type="text" name="logradouro" id="logradouro" value="<?php echo $logradouro; ?>">
+                    <label for="logradouro" class="labelInput">Rua:</label>
                 </div>
                 <br><br>
                 <div class="inputBox">
@@ -133,7 +135,7 @@ if (!empty($_GET['id'])) {
 
 function limpa_formulário_cep() {
         //Limpa valores do formulário de cep.
-        document.getElementById('endereco').value=("");
+        document.getElementById('logradouro').value=("");
         document.getElementById('bairro').value=("");
         document.getElementById('cidade').value=("");
         document.getElementById('estado').value=("");
@@ -142,7 +144,7 @@ function limpa_formulário_cep() {
 function meu_callback(conteudo) {
     if (!("erro" in conteudo)) {
         //Atualiza os campos com os valores.
-        document.getElementById('endereco').value=(conteudo.logradouro);
+        document.getElementById('logradouro').value=(conteudo.logradouro);
         document.getElementById('bairro').value=(conteudo.bairro);
         document.getElementById('cidade').value=(conteudo.localidade);
         document.getElementById('estado').value=(conteudo.uf);
@@ -169,7 +171,7 @@ function pesquisacep(valor) {
         if(validacep.test(cep)) {
 
             //Preenche os campos com "..." enquanto consulta webservice.
-            document.getElementById('endereco').value="...";
+            document.getElementById('logradouro').value="...";
             document.getElementById('bairro').value="...";
             document.getElementById('cidade').value="...";
             document.getElementById('estado').value="...";

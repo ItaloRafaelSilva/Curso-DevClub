@@ -105,8 +105,8 @@ VALUES ('$nome','$senha','$email','$cpf','$rg','$telefone','$data_nascimento','$
                 </div>
                 <br><br>
                 <div class="inputBox">
-                    <input type="text" name="endereco" id="endereco" class="inputUser" required>
-                    <label for="endereco" class="labelInput">Rua:</label>
+                    <input type="text" name="logradouro" id="endereco" class="inputUser" required>
+                    <label for="logradouro" class="labelInput">Rua:</label>
                 </div>
                 <br><br>
                 <div class="inputBox">
