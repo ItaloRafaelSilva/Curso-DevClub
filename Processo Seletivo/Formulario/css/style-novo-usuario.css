@@ -1,0 +1,31 @@
+.button-voltar{
+    background-image: linear-gradient(to right,rgb(0, 92, 197), rgb(90, 20, 220));
+    width: 5%;
+    border: none;
+    padding: 15px;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 10px;
+    
+}
+.button-voltar:hover{
+    background-color: deepskyblue;
+    cursor: pointer;
+}
+
+.button-endereco{
+    background-image: linear-gradient(to right,rgb(0, 92, 197), rgb(90, 20, 220));
+    width: 10%;
+    border: none;
+    padding: 15px;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 10px;
+    
+}
+.button-endereco:hover{
+    background-color: deepskyblue;
+    cursor: pointer;
+}
