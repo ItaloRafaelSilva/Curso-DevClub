@@ -1,14 +1,13 @@
 
 body{
+    box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
     background-image: linear-gradient(to right, rgb(20, 147, 220), rgb(17, 54, 71));
 }
 .box{
     color: white;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+    display: inline-block;
+    margin: 250px 150px 250px 150px;
     background-color: rgba(0, 0, 0, 0.6);
     padding: 15px;
     border-radius: 15px;
@@ -26,7 +25,7 @@ legend{
     border-radius: 8px;
 }
 .inputBox{
-    position: relative;
+    position: flex;
 }
 .inputUser{
     background: none;
@@ -39,7 +38,7 @@ legend{
     letter-spacing: 2px;
 }
 .labelInput{
-    position: absolute;
+    position: flex;
     top: 0px;
     left: 0px;
     pointer-events: none;
@@ -58,19 +57,6 @@ legend{
     outline: none;
     font-size: 15px;
 }
-#submit{
-    background-image: linear-gradient(to right,rgb(0, 92, 197), rgb(90, 20, 220));
-    width: 100%;
-    border: none;
-    padding: 15px;
-    color: white;
-    font-size: 15px;
-    cursor: pointer;
-    border-radius: 10px;
-}
-#submit:hover{
-    background-image: linear-gradient(to right,rgb(0, 80, 172), rgb(80, 19, 195));
-}
 
 #button-voltar{
     background-image: linear-gradient(to right,rgb(0, 92, 197), rgb(90, 20, 220));
@@ -84,22 +70,4 @@ legend{
 }
 #button-voltar:hover{
     background-image: linear-gradient(to right,rgb(0, 80, 172), rgb(80, 19, 195));
-}
-
-#button-endereco{
-    background-image: linear-gradient(to right,rgb(0, 92, 197), rgb(90, 20, 220));
-    width: 8%;
-    border: none;
-    padding: 15px;
-    color: white;
-    font-size: 15px;
-    cursor: pointer;
-    border-radius: 10px;
-}
-#button-endereco:hover{
-    background-image: linear-gradient(to right,rgb(0, 80, 172), rgb(80, 19, 195));
-}
-
-.box-endereco1{
-    color: aliceblue;
 }

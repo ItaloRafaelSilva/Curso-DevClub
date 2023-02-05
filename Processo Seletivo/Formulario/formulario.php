@@ -1,8 +1,11 @@
 <?php
 
 if (isset($_POST['submit'])) {
+  include_once 'config.php';
 
-    include_once('config.php');
+  try {
+    $pdo = new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUsername, $dbPassword);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $nome = $_POST['nome'];
     $senha = $_POST['senha'];
@@ -11,17 +14,28 @@ if (isset($_POST['submit'])) {
     $rg = $_POST['rg'];
     $telefone = $_POST['telefone'];
     $data_nascimento = $_POST['data'];
-    $cep = $_POST['cep'];
-    $estado = $_POST['estado'];
-    $cidade = $_POST['cidade'];
-    $endereco = $_POST['endereco'];
-    $bairro = $_POST['bairro'];
-    $num = $_POST['num'];
 
-    $result = mysqli_query($conexao, "INSERT INTO usuarios(nome,senha,email,cpf,rg,telefone,data,cep,cidade,estado,endereco,bairro,num) 
-VALUES ('$nome','$senha','$email','$cpf','$rg','$telefone','$data_nascimento','$cep','$cidade','$estado','$endereco','$bairro','$num')");
+    $stmt = $pdo->prepare("INSERT INTO usuarios (nome, senha, email, cpf, rg, telefone, data) VALUES (:nome, :senha, :email, :cpf, :rg, :telefone, :data_nascimento)");
+    $stmt->bindParam(':nome', $nome, PDO::PARAM_STR);
+    $stmt->bindParam(':senha', $senha, PDO::PARAM_STR);
+    $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+    $stmt->bindParam(':cpf', $cpf, PDO::PARAM_STR);
+    $stmt->bindParam(':rg', $rg, PDO::PARAM_STR);
+    $stmt->bindParam(':telefone', $telefone, PDO::PARAM_STR);
+    $stmt->bindParam(':data_nascimento', $data_nascimento, PDO::PARAM_STR);
+    $stmt->execute();
+
+    if ($stmt->rowCount() > 0) {
+      echo "<script> alert('Usuário cadastrado com sucesso!'); </script>";
+    } else {
+      echo "<script> alert('Erro ao cadastrar usuário.'); </script>";
+    }
 
     header('Location: login.php');
+    exit;
+  } catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+  }
 }
 
 ?>
@@ -87,36 +101,6 @@ VALUES ('$nome','$senha','$email','$cpf','$rg','$telefone','$data_nascimento','$
                 <div class="inputBox">
                     <input type="text" name="data" id="data" class="inputUser" required>
                     <label for="data" class="labelInput">Data de Nascimento:</label>
-                </div>
-                <br><br>
-                <div class="inputBox">
-                    <input type="text" name="cep" id="cep" value="" size="10" onblur="pesquisacep(this.value);" class="inputUser" required>
-                    <label for="cep" class="labelInput">CEP:</label>
-                </div>
-                <br><br>
-                <div class="inputBox">
-                    <input type="text" name="cidade" id="cidade" class="inputUser" required>
-                    <label for="cidade" class="labelInput">Cidade</label>
-                </div>
-                <br><br>
-                <div class="inputBox">
-                    <input type="text" name="estado" id="estado" class="inputUser" required>
-                    <label for="estado" class="labelInput">Estado</label>
-                </div>
-                <br><br>
-                <div class="inputBox">
-                    <input type="text" name="logradouro" id="endereco" class="inputUser" required>
-                    <label for="logradouro" class="labelInput">Rua:</label>
-                </div>
-                <br><br>
-                <div class="inputBox">
-                    <input type="text" name="bairro" id="bairro" class="inputUser" required>
-                    <label for="bairro" class="labelInput">Bairro:</label>
-                </div>
-                <br><br>
-                <div class="inputBox">
-                    <input type="text" name="num" id="num" class="inputUser" required>
-                    <label for="num" class="labelInput">Número</label>
                 </div>
                 <br><br>
                 <input type="submit" name="submit" id="submit">

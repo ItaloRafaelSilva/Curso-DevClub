@@ -1,36 +1,34 @@
 <?php
-    // isset -> serve para saber se uma variável está definida
-    include_once('config.php');
-    if(isset($_POST['update']))
-    {
-        $id = $_POST['id'];
-        $nome = $_POST['nome'];
-        $email = $_POST['email'];
-        $senha = $_POST['senha'];
-        $cpf = $_POST['cpf'];
-        $rg = $_POST['rg'];
-        $telefone = $_POST['telefone'];
-        $data_nascimento = $_POST['data'];
-        $cep = $_POST['cep'];
-        $cidade = $_POST['cidade'];
-        $estado = $_POST['estado'];
-        $logradouro = $_POST['logradouro'];
-        $bairro = $_POST['bairro'];
-        $num = $_POST['num'];
-        
-        $sqlInsert = "UPDATE usuarios 
-        SET nome='$nome',senha='$senha',cpf='$cpf',rg='$rg',email='$email',telefone='$telefone',data='$data_nascimento',cep='$cep',cidade='$cidade',estado='$estado',logradouro='$logradouro',bairro='$bairro',num='$num'
-        WHERE id=$id";
-        $result = $conexao->query($sqlInsert);
-        print_r($result);
-    
-    if (mysqli_query($conexao, $sqlInsert)){
-        echo "<script>alert('Cadastro atualizado com sucesso!');window.location='sistema.php?id=$id';</script>";
-      } else{
-         echo "Deu erro" . $sqlInsert . "<br>" . mysqli_error($conexao);
-      }
-     mysqli_close($conexao);
+
+include_once('config.php');
+
+if (isset($_POST['update'])) {
+    $id = $_POST['id'];
+    $nome = mysqli_real_escape_string($conn, $_POST['nome']);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $senha = mysqli_real_escape_string($conn, $_POST['senha']);
+    $cpf = mysqli_real_escape_string($conn, $_POST['cpf']);
+    $rg = mysqli_real_escape_string($conn, $_POST['rg']);
+    $telefone = mysqli_real_escape_string($conn, $_POST['telefone']);
+    $data_nascimento = mysqli_real_escape_string($conn, $_POST['data']);
+
+    if (empty($nome) || empty($email) || empty($senha) || empty($cpf) || empty($rg) || empty($telefone) || empty($data_nascimento)) {
+        echo "<script>alert('Por favor, preencha todos os campos obrigatórios!');window.history.back();</script>";
+        exit;
     }
+    
+    $stmt = $conn->prepare("UPDATE usuarios SET nome=?, senha=?, cpf=?, rg=?, email=?, telefone=?, data=? WHERE id=?");
+    $stmt->bind_param("sssssssi", $nome, $senha, $cpf, $rg, $email, $telefone, $data_nascimento, $id);
+    $stmt->execute();
+    
+    if ($stmt->affected_rows > 0) {
+        echo "<script>alert('Cadastro atualizado com sucesso!');window.location='sistema.php?id=$id';</script>";
+    } else {
+        echo "Deu erro" . $stmt->error;
+    }
+    $stmt->close();
+    $conn->close();
+}
 
 
 ?>

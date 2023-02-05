@@ -1,25 +1,21 @@
 <?php
 
-if(!empty($_GET['id']))
-{
-    include_once('config.php');
+include_once 'config.php';
 
+$mysqli = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
+
+if (!empty($_GET['id'])) {
     $id = $_GET['id'];
 
-    $sqlSelect = "SELECT *  FROM usuarios WHERE id=$id";
+    $stmt = $mysqli->prepare("DELETE FROM usuarios WHERE id = ?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
 
-    $result = $conexao->query($sqlSelect);
-
-    if($result->num_rows > 0)
-    {
-        $sqlDelete = "DELETE FROM usuarios WHERE id=$id";
-        $resultDelete = $conexao->query($sqlDelete);
+    if ($stmt->affected_rows > 0) {
+        echo "<script>alert('Cadastro deletado com sucesso!');window.location = 'sistema.php';</script>";
+    } else {
+        echo "Ocorreu um erro ao deletar o cadastro.";
     }
-}
-if (mysqli_query($conexao,$sqlDelete)){
-    echo "<script>alert('Cadastro deletador com sucesso!');window.location = 'sistema.php';</script>";
-}else{
-    echo 'Deu Erro';
 }
 
 ?>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 04-Fev-2023 às 17:48
+-- Tempo de geração: 05-Fev-2023 às 19:01
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.2.0
 
@@ -38,19 +38,6 @@ CREATE TABLE `endereco` (
   `usuario_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Extraindo dados da tabela `endereco`
---
-
-INSERT INTO `endereco` (`id`, `cep`, `cidade`, `estado`, `logradouro`, `bairro`, `num`, `usuario_id`) VALUES
-(7, '13486-137', 'Limeira', 'SP', 'Avenida', 'Jardim Rossi', '205', 1),
-(8, '13486-137', 'Limeira', 'SP', 'a', 'Jardim Rossi', '6', 1),
-(9, '13486-137', 'Limeira', 'SP', 'Rua Américo Graciatti', 'Jardim Rossi', '213', 1),
-(10, '02040-070', 'São Paulo', 'SP', 'Rua Barra de São João', 'Jardim São Paulo(Zona Norte)', '2012', 1),
-(11, '02040-070', 'São Paulo', 'SP', 'Rua Barra de São João', 'Jardim São Paulo(Zona Norte)', '2012', 1),
-(12, '01010-904', 'São Paulo', 'SP', 'Rua São Bento', 'Centro', '546', 1),
-(13, '02040-070', 'São Paulo', 'SP', 'Rua Barra de São João', 'Jardim São Paulo(Zona Norte)', '210', 1);
-
 -- --------------------------------------------------------
 
 --
@@ -65,23 +52,18 @@ CREATE TABLE `usuarios` (
   `cpf` varchar(100) NOT NULL,
   `rg` varchar(100) NOT NULL,
   `telefone` varchar(15) NOT NULL,
-  `data` varchar(10) NOT NULL,
-  `cep` varchar(100) NOT NULL,
-  `cidade` varchar(100) NOT NULL,
-  `estado` varchar(100) NOT NULL,
-  `logradouro` varchar(100) NOT NULL,
-  `bairro` varchar(100) NOT NULL,
-  `num` varchar(5) NOT NULL,
-  `usuario_id` int(11) NOT NULL
+  `data` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Extraindo dados da tabela `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nome`, `senha`, `email`, `cpf`, `rg`, `telefone`, `data`, `cep`, `cidade`, `estado`, `logradouro`, `bairro`, `num`, `usuario_id`) VALUES
-(1, 'italo1', '819332241', 'italo@gmail.com1', '666.666.666-62', '66.666.662', '(19) 98227-7701', '11/11/1111', '13486-136', 'Limeira', 'SP', 'Rua Vitorio Ceneviva', 'Jardim Rossi', '5051', 0),
-(64, 'Neide', '1', 'neide@gmail.com', '111.111.111-11', '11.111.111', '(11) 11111-1111', '11/11/1111', '13486-137', 'Limeira', 'SP', 'Rua Américo Graciatti', 'Jardim Rossi', '2013', 0);
+INSERT INTO `usuarios` (`id`, `nome`, `senha`, `email`, `cpf`, `rg`, `telefone`, `data`) VALUES
+(68, 'Italo12', '1', 'italorafaelsilva20@gmail.com', '111.111.111-11', '11.111.111', '(11) 11111-1111', '11/11/1111'),
+(69, 'Rafael1', '1', 'italoteste@gmail.com1', '222.222.222-22', '22.222.222', '(22) 22222-2222', '22/22/2222'),
+(70, 'Italo', '1', 'italorafaelsilvaxj6@gmail.com', '333.333.333-33', '33.333.333', '(33) 33333-3333', '33/33/3333'),
+(71, 'Italo', '1', 'italorafaelsilvaxj6@gmail.com', '333.333.333-33', '33.333.333', '(33) 33333-3333', '33/33/3333');
 
 --
 -- Índices para tabelas despejadas
@@ -92,7 +74,7 @@ INSERT INTO `usuarios` (`id`, `nome`, `senha`, `email`, `cpf`, `rg`, `telefone`,
 --
 ALTER TABLE `endereco`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `usuario_id` (`usuario_id`);
+  ADD KEY `endereco` (`usuario_id`);
 
 --
 -- Índices para tabela `usuarios`
@@ -108,13 +90,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `endereco`
 --
 ALTER TABLE `endereco`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- Restrições para despejos de tabelas
@@ -124,7 +106,7 @@ ALTER TABLE `usuarios`
 -- Limitadores para a tabela `endereco`
 --
 ALTER TABLE `endereco`
-  ADD CONSTRAINT `endereco_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`);
+  ADD CONSTRAINT `endereco` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

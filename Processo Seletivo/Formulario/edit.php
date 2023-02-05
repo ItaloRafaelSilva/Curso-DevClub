@@ -3,32 +3,28 @@ include_once('config.php');
 
 if (!empty($_GET['id'])) {
     $id = $_GET['id'];
-    $sqlSelect = "SELECT * FROM usuarios WHERE id=$id";
-    $result = $conexao->query($sqlSelect);
+    $stmt = $conn->prepare("SELECT * FROM usuarios WHERE id=?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $result = $stmt->get_result();
     if ($result->num_rows > 0) {
-        while ($user_data = mysqli_fetch_assoc($result)) {
-
-            $nome = $user_data['nome'];
-            $senha = $user_data['senha'];
-            $email = $user_data['email'];
-            $cpf = $user_data['cpf'];
-            $rg = $user_data['rg'];
-            $telefone = $user_data['telefone'];
-            $data_nascimento = $user_data['data'];
-            $cep = $user_data['cep'];
-            $estado = $user_data['estado'];
-            $cidade = $user_data['cidade'];
-            $logradouro = $user_data['logradouro'];
-            $bairro = $user_data['bairro'];
-            $num = $user_data['num'];
-        }
+        $user_data = $result->fetch_assoc();
+        $nome = $user_data['nome'];
+        $senha = $user_data['senha'];
+        $email = $user_data['email'];
+        $cpf = $user_data['cpf'];
+        $rg = $user_data['rg'];
+        $telefone = $user_data['telefone'];
+        $data_nascimento = $user_data['data'];
     } else {
         header('Location: sistema.php');
     }
 } else {
     header('Location: sistema.php');
 }
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,7 +33,6 @@ if (!empty($_GET['id'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/edit.css">
-    <link rel="stylesheet" href="./css/style-novo-usuario.css">
     <script src="./js/jquery.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
     <script src="./js/jquery.mask.min.js"></script>
@@ -93,36 +88,6 @@ if (!empty($_GET['id'])) {
                 <div class="inputBox">
                     <input type="text" name="data" id="data" class="inputUser" value=<?php echo $data_nascimento; ?> required>
                     <label for="data" class="labelInput">Data de Nascimento:</label>
-                </div>
-                <br><br>
-                <div class="inputBox">
-                    <input type="text" name="cep" id="cep" class="inputUser" onblur="pesquisacep(this.value);"  value=<?php echo $cep; ?> required>
-                    <label for="cep" class="labelInput">CEP:</label>
-                </div>
-                <br><br>
-                <div class="inputBox">
-                    <input class="inputUser" type="text" name="cidade" id="cidade" value="<?php echo $cidade; ?>">
-                    <label for="cidade" class="labelInput">Cidade</label>
-                </div>
-                <br><br>
-                <div class="inputBox">
-                    <input type="text" name="estado" id="estado" class="inputUser" value=<?php echo $estado; ?> required>
-                    <label for="estado" class="labelInput">Estado</label>
-                </div>
-                <br><br>
-                <div class="inputBox">
-                    <input class="inputUser" type="text" name="logradouro" id="logradouro" value="<?php echo $logradouro; ?>">
-                    <label for="logradouro" class="labelInput">Rua:</label>
-                </div>
-                <br><br>
-                <div class="inputBox">
-                    <input class="inputUser" type="text" name="bairro" id="bairro" value="<?php echo $bairro; ?>">
-                    <label for="bairro" class="labelInput">Bairro:</label>
-                </div>
-                <br><br>
-                <div class="inputBox">
-                    <input type="text" name="num" id="num" maxlength="5" class="inputUser" value=<?php echo $num; ?>>
-                    <label for="num" class="labelInput">Número</label>
                 </div>
                 <br><br>
                 <input type="hidden" name="id" value=<?php echo $id; ?>>

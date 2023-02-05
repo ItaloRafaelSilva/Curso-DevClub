@@ -1,23 +1,35 @@
 <?php
-//conexão com o BD
 include_once "config.php";
 
-$usuario_id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
+try {
+    if (!empty($_GET['id'])) {
+        $usuario_id = $_GET['id'];
 
-if (!empty($_GET['id'])) {
-    $id = $_GET['id'];
-    $sqlSelect = "SELECT * FROM usuarios ";
-    $result = $conexao->query($sqlSelect);
-    if ($result->num_rows > 0) {
-        while ($user_data = mysqli_fetch_assoc($result)) {
-            $cep = $user_data['cep'];
-            $estado = $user_data['estado'];
-            $cidade = $user_data['cidade'];
-            $logradouro = $user_data['logradouro'];
-            $bairro = $user_data['bairro'];
-            $num = $user_data['num'];
+
+        if(isset($_POST['submit'])) {
+            $cep = mysqli_real_escape_string($conn, $_POST['cep']);
+            $estado = mysqli_real_escape_string($conn, $_POST['estado']);
+            $cidade = mysqli_real_escape_string($conn, $_POST['cidade']);
+            $logradouro = mysqli_real_escape_string($conn, $_POST['logradouro']);
+            $bairro = mysqli_real_escape_string($conn, $_POST['bairro']);
+            $num = mysqli_real_escape_string($conn, $_POST['num']);
+
+            $sqlInsert = "INSERT INTO endereco (cep, estado, cidade, logradouro, bairro, num, usuario_id) 
+            VALUES ('$cep', '$estado', '$cidade', '$logradouro', '$bairro', '$num', $usuario_id)";
+
+            if (mysqli_query($conn, $sqlInsert)) {
+                echo "<script>alert('Endereço salvo com sucesso!');</script>";
+            } else {
+                throw new Exception("Error: " . $sqlInsert . "<br>" . mysqli_error($conn));
+            }
         }
-}
+    } else {
+        throw new Exception("Error: id do usuário não encontrado");
+    }
+} catch (Exception $e) {
+    echo $e->getMessage();
 }
 ?>
 
@@ -40,38 +52,6 @@ if (!empty($_GET['id'])) {
 </head>
 <a href="edit.php"><button class="button-endereco">Voltar</button></a>
 <body>
-
-    <?php
-
-    $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
-
-    //Envio dos dados ao BD
-    if (!empty($dados['SendCadEnd'])) {
-        //var_dump($dados);
-        //QUERY cadastrar no Banco
-        $query_endereco = "INSERT INTO endereco(cep, cidade, estado, logradouro, bairro, num, usuario_id) 
-    VALUES(?, ?, ?, ?, ?, ?, ?)";
-        $cad_endereco = $conexao->prepare($query_endereco);
-        $cadastrou = $cad_endereco->execute(array(
-            $dados['cep'],
-            $dados['cidade'],
-            $dados['estado'],
-            $dados['logradouro'],
-            $dados['bairro'],
-            $dados['num'],
-            $dados['usuario_id']
-        ));
-
-        //var_dump($id);
-
-       //if ($cadastrou) {
-          //  echo "<p>Endereço cadastrado com sucesso.</p>";
-       // } else {
-            //echo "<p>Erro ao cadastrar endereço.</p>";
-       // }
-    }
-
-    ?>
 
     <div class="box">
         

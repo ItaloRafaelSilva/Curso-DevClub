@@ -1,20 +1,21 @@
 <?php
     require("config.php");
-
     session_start();
-    //evitar entrar no sistema com SQLinjector
     if(isset($_POST['submit']) && !empty($_POST['email']) && !empty($_POST['senha']))
     {
-        // Acessa
-        include_once('config.php');
         $email = $_POST['email'];
         $senha = $_POST['senha'];
 
+        $mysqli = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
+
+        if($mysqli->connect_error) {
+            die("Erro na conexão: " . $mysqli->connect_error);
+        }
+
         $sql = "SELECT * FROM usuarios WHERE email = '$email' and senha = '$senha'";
+        $result = $mysqli->query($sql);
 
-        $result = $conexao->query($sql);
-
-        if(mysqli_num_rows($result) < 1)
+        if($result->num_rows < 1)
         {
             unset($_SESSION['email']);
             unset($_SESSION['senha']);
@@ -26,10 +27,10 @@
             $_SESSION['senha'] = $senha;
             header('Location: sistema.php');
         }
+        $mysqli->close();
     }
     else
     {
-        // Não acessa
         header('Location: login.php');
     }
 ?>

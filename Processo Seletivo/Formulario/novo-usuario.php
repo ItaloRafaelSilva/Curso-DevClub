@@ -2,7 +2,7 @@
 
 if (isset($_POST['submit'])) {
 
-    include_once('config.php');
+    include_once 'config.php';
 
     $nome = $_POST['nome'];
     $senha = $_POST['senha'];
@@ -11,19 +11,23 @@ if (isset($_POST['submit'])) {
     $rg = $_POST['rg'];
     $telefone = $_POST['telefone'];
     $data_nascimento = $_POST['data'];
-    $cep = $_POST['cep'];
-    $estado = $_POST['estado'];
-    $cidade = $_POST['cidade'];
-    $logradouro = $_POST['logradouro'];
-    $bairro = $_POST['bairro'];
-    $num = $_POST['num'];
 
-    $result = mysqli_query($conexao, "INSERT INTO usuarios(nome,senha,email,cpf,rg,telefone,data,cep,cidade,estado,logradouro,bairro,num) 
-VALUES ('$nome','$senha','$email','$cpf','$rg','$telefone','$data_nascimento','$cep','$cidade','$estado','$logradouro','$bairro','$num')");
-    header('Location: sistema.php');
+    $stmt = $conn->prepare("INSERT INTO usuarios (nome, senha, email, cpf, rg, telefone, data) VALUES (?,?,?,?,?,?,?)");
+    $stmt->bind_param("sssssss", $nome, $senha, $email, $cpf, $rg, $telefone, $data_nascimento);
+    $stmt->execute();
+
+    if ($stmt->affected_rows > 0) {
+        echo "<script>alert('Novo usuário criado com sucesso!');window.location = 'sistema.php';</script>";
+    } else {
+        echo "<script>alert('Erro ao criar novo usuário.');</script>";
+    }
+
+    $stmt->close();
+    $conn->close();
 }
 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -89,36 +93,6 @@ VALUES ('$nome','$senha','$email','$cpf','$rg','$telefone','$data_nascimento','$
                 <div class="inputBox">
                     <input type="text" name="data" id="data" class="inputUser" required>
                     <label for="data" class="labelInput">Data de Nascimento:</label>
-                </div>
-                <br><br>
-                <div class="inputBox">
-                    <input type="text" name="cep" id="cep" value="" size="10" onblur="pesquisacep(this.value);" class="inputUser" required>
-                    <label for="cep" class="labelInput">CEP:</label>
-                </div>
-                <br><br>
-                <div class="inputBox">
-                    <input type="text" name="cidade" id="cidade" class="inputUser" required>
-                    <label for="cidade" class="labelInput">Cidade</label>
-                </div>
-                <br><br>
-                <div class="inputBox">
-                    <input type="text" name="estado" id="estado" class="inputUser" required>
-                    <label for="estado" class="labelInput">Estado</label>
-                </div>
-                <br><br>
-                <div class="inputBox">
-                    <input type="text" name="logradouro" id="logradouro" class="inputUser" required>
-                    <label for="logradouro" class="labelInput">Rua:</label>
-                </div>
-                <br><br>
-                <div class="inputBox">
-                    <input type="text" name="bairro" id="bairro" class="inputUser" required>
-                    <label for="bairro" class="labelInput">Bairro:</label>
-                </div>
-                <br><br>
-                <div class="inputBox">
-                    <input type="text" name="num" id="num" class="inputUser" required>
-                    <label for="num" class="labelInput">Número</label>
                 </div>
                 <br><br>
                 <input type="submit" name="submit" id="submit">
